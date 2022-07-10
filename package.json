@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server to run and compile the codes of the various languages ",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pankaj Adhana",
+  "license": "ISC",
+  "dependencies": {
+    "compilex": "^0.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}
