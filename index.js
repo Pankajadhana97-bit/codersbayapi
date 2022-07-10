@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const compiler = require("compilex");
 const app = express();
-const PORT = 8000;
+const PORT = "https://codersbayapi.herokuapp.com"
 
 app.use(cors());
 app.use(express.json());
@@ -47,5 +47,5 @@ app.post('/compile', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`server is listening on port ${ process.env.PORT | PORT }`);
+    console.log(`server is listening on port ${  PORT }`);
 });
