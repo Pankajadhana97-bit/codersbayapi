@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const compiler = require("compilex");
 const app = express();
-const PORT = "https://codersbayapi.herokuapp.com"
+const PORT = process.env.PORT | 8000;
 
 app.use(cors());
 app.use(express.json());
@@ -20,8 +20,8 @@ app.post('/compile', (req, res) => {
     const {code,language,input} = req.body;
 
     if(language === 'cpp' || language === 'c') {
-    var envData = { OS: "linux" , cmd: "gcc" , options: {timeout : 5000 } };
-    var envData = { OS: "windows", cmd: "g++", options: { timeout: 5000 } };
+    var envData = { OS: "linux" , cmd: "gcc" , options: {timeout : 10000 } };
+    var envData = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
     compiler.compileCPPWithInput(envData, code, input,  (data)  => {
         console.log(data.error)
         res.send(data);
@@ -47,5 +47,5 @@ app.post('/compile', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`server is listening on port ${  PORT }`);
+    console.log(`server is listening on port ${ PORT }`);
 });
