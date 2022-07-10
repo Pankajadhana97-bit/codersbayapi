@@ -4,16 +4,8 @@ const compiler = require("compilex");
 const app = express();
 const PORT = process.env.PORT | 8000;
 
-var corsOption = {
-    origin : 'https://codersbay.netlify.app',
-    optionsSuccessStatus : 200
-}
 
-app.get('/compile',cors(corsOption),(req,res,next) =>{
-    res.json({ msg : 'THIS IS THE CORS FOR ONLY EXAMPLE'});
-})
-
-app.use(cors());
+app.use('*',cors());
 app.use(express.json());
 
 let option = { stats: true };
