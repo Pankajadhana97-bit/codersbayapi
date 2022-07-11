@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config()
-var cors = require('cors');
-var compiler = require("compilex");
+const  cors = require('cors');
+const compiler = require("compilex");
 const app = express();
 
 app.use('*',cors());
@@ -25,7 +25,7 @@ app.post('/compile', (req, res) => {
     var envData = { OS: "linux" , cmd: "gcc" , options: {timeout : 10000 } };
     var envData = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
     compiler.compileCPPWithInput(envData, code, input,  (data)  => {
-        console.log(data.error)
+        console.log(JSON.stringify(data.error));
         res.send(data);
     });
    }
@@ -34,6 +34,7 @@ app.post('/compile', (req, res) => {
     var envData = { OS : "windows"}; 
     var envData = { OS : "linux" }; 
     compiler.compilePythonWithInput( envData , code , input , (data) => {
+        console.log(JSON.stringify(data.error));
         res.send(data);        
     });
    }
@@ -42,6 +43,7 @@ app.post('/compile', (req, res) => {
     var envData = { OS : "windows"}; 
     var envData = { OS : "linux" }; 
     compiler.compileJavaWithInput( envData , code , input ,  (data) => {
+        console.log(JSON.stringify(data.error));
         res.send(data);
     });
    }
