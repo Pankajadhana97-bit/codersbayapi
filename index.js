@@ -15,9 +15,9 @@ compiler.init(option)
 
 app.post('/compile', (req, res) => {
 
-    // compiler.flush( () => {
-    //     console.log("All temporary files flushed !");
-    // });
+    compiler.flush( () => {
+        console.log("All temporary files flushed !");
+    });
 
     const {code,language,input} = req.body;
 
