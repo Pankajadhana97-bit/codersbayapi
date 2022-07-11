@@ -1,12 +1,12 @@
 const express = require('express');
-const cors = require('cors');
-const compiler = require("compilex");
+var cors = require('cors');
+var compiler = require("compilex");
 const app = express();
-const PORT = process.env.PORT | 8000;
 
-
-app.use('*',cors());
+app.use(cors());
 app.use(express.json());
+
+const PORT = process.env.PORT | 8000;
 
 let option = { stats: true };
 compiler.init(option)
@@ -14,9 +14,9 @@ compiler.init(option)
 
 app.post('/compile', (req, res) => {
 
-    compiler.flush( () => {
-        console.log("All temporary files flushed !");
-    });
+    // compiler.flush( () => {
+    //     console.log("All temporary files flushed !");
+    // });
 
     const {code,language,input} = req.body;
 
