@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config()
 var cors = require('cors');
 var compiler = require("compilex");
 const app = express();
@@ -6,7 +7,7 @@ const app = express();
 app.use('*',cors());
 app.use(express.json());
 
-const PORT = process.env.PORT | 8000;
+const PORT = process.env.PORT;
 
 let option = { stats: true };
 compiler.init(option)
